@@ -10,6 +10,7 @@ class Node {
 
 let _length = Symbol();
 let _head = Symbol();
+let _tail = Symbol();
 /**
  * 链表
  */
@@ -39,7 +40,7 @@ class LinkedList {
     }
 
     /**
-     * 想列表特定的位置插入一个新的项
+     * 向列表特定的位置插入一个新的项
      * @param {*} position 要插入的位置
      * @param {*} element 要插入的元素
      */
@@ -47,17 +48,17 @@ class LinkedList {
         if (position > -1 && position <= this[_length]) {
             let node = new Node(element),
                 current = this[_head],
-                previuous, index = 0;
+                previous, index = 0;
             if (position === 0) {
                 node.next = current;
                 this[_head] = node;
             } else {
                 while (index++ < position) {
-                    previuous = current;
+                    previous = current;
                     current = current.next;
                 }
                 node.next = current;
-                previuous.next = node;
+                previous.next = node;
             }
             this[_length]++;
             return true;
@@ -159,13 +160,131 @@ class LinkedList {
     }
 }
 
+/**
+ * 双向链表节点
+ */
+class DoublyNode extends Node {
+    constructor(element) {
+        super(element);
+        this.prev = null;
+    }
+}
 
+/**
+ * 双向链表
+ */
+class DoublyLinkList extends LinkedList {
+    constructor() {
+            super();
+            this[_tail] = null;
+        }
+        /**
+         * 向双向链表尾部插入数据
+         * @param {*} element 要添加的数据
+         */
+    append(element) {
+        let dnode = new DoublyNode(element),
+            current;
+        if (this[_head] === null) {
+            this[_head] = dnode;
+            this[_tail] = dnode;
+        } else {
+            current = this[_head];
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = dnode;
+            dnode.prev = current;
+            this[_tail] = dnode;
+        }
+        this[_length]++;
+    }
 
+    /**
+     * 向双向链表指定位置插入数据
+     * @param {*} position 指定的位置 
+     * @param {*} element 插入的数据
+     */
+    insert(position, element) {
+        if (position > -1 && position <= this[_length]) { //判断插入的范围是否合理
+            let dnode = new DoublyNode(element),
+                current = this[_head],
+                previous,
+                index = 0;
+            if (position === 0) {
+                if (!this[_head]) {
+                    this[_head] = dnode;
+                    this[_tail] = dnode;
+                } else {
+                    dnode.next = current;
+                    current.prev = dnode;
+                    this[_head] = dnode;
+                }
+            } else if (position === this[_length]) {
+                current = this[_tail];
+                current.next = dnode;
+                dnode.prev = current;
+                this[_tail] = dnode;
+            } else {
+                while (index++ < position) {
+                    previous = current;
+                    current = current.next;
+                }
+                dnode.next = current;
+                previous.next = dnode;
 
+                current.prev = dnode;
+                dnode.prev = previous;
+            }
+            this[_length]++;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    /**
+     * 移除指定位置的元素
+     * @param {*} position 指定的位置 
+     */
+    removeAt(position) {
+        if (position > -1 && position < this[_length]) {
+            let current = this[_head],
+                previous,
+                index = 0;
+            if (position === 0) {
+                this[_head] = current.next;
+                if (this[_length] === 1) {
+                    this[_tail] = null;
+                } else {
+                    this[_head].prev = null;
+                }
+            } else if (position === this[_length] - 1) {
+                current = this[_tail];
+                this[_tail] = current.prev;
+                this[_tail].next = null;
+            } else {
+                while (index++ < position) {
+                    previous = current;
+                    current = current.next;
+                }
+                previous.next = current.next;
+                current.next.prev = previous;
+            }
+            this[_length]--;
+            return current.element;
+        } else {
+            return null;
+        }
+    }
 
+    /**
+     * 得到双向列表的尾部
+     */
+    getTail() {
+        return this[_tail];
+    }
 
+}
 
-
-
-export { LinkedList }
+export { LinkedList, DoublyLinkList }

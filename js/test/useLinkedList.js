@@ -1,4 +1,4 @@
-import { LinkedList } from "../dataStruct/LinkedList.js";
+import { LinkedList, DoublyLinkList } from "../dataStruct/LinkedList.js";
 
 function testLinkedList() {
     let linkedList = new LinkedList();
@@ -19,4 +19,26 @@ function testLinkedList() {
     linkedList.print();
 }
 
-export { testLinkedList }
+
+function testDoublyLinkedList() {
+    let dlinkerList = new DoublyLinkList();
+    console.log(dlinkerList.isEmpty());
+    dlinkerList.append(1);
+    dlinkerList.append(2);
+    dlinkerList.append(3);
+    console.log(dlinkerList.insert(1, 4));
+    console.log(dlinkerList.insert(10, 10));
+    console.log(dlinkerList.indexOf(3));
+    console.log(dlinkerList.size());
+    dlinkerList.print();
+    console.log(dlinkerList.remove(1));
+    dlinkerList.print();
+    console.log(dlinkerList.isEmpty());
+    console.log(dlinkerList.getHead());
+    console.log(dlinkerList.getTail());
+    console.log(dlinkerList.remveAt(1));
+    dlinkerList.print();
+}
+
+
+export { testLinkedList, testDoublyLinkedList }

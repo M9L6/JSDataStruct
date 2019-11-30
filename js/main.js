@@ -1,6 +1,7 @@
-import { divideBy2, baseConvert, testStack } from "./test/useStack.js"
+import { divideBy2, baseConvert, testStack } from "./test/useStack.js";
 import { testQueue, hotPotato } from "./test/useQueue.js";
-import { testLinkedList } from "./test/useLinkedList.js";
+import { testLinkedList, testDoublyLinkedList } from "./test/useLinkedList.js";
+import { testSet } from "./test/useSet.js";;
 
 testStack();
 console.log(divideBy2(23));
@@ -17,3 +18,7 @@ let winner = hotPotato(names, 7);
 console.log("The winner is: " + winner);
 
 testLinkedList();
+
+testDoublyLinkedList();
+
+testSet();
