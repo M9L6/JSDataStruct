@@ -1,9 +1,13 @@
 import { divideBy2, baseConvert, testStack } from "./test/useStack.js";
 import { testQueue, hotPotato } from "./test/useQueue.js";
 import { testLinkedList, testDoublyLinkedList } from "./test/useLinkedList.js";
-import { testSet } from "./test/useSet.js";;
+import { testSet } from "./test/useSet.js";
+import { testDictionary } from "./test/useDictionary.js";
+import { testHashTable } from "./test/useHashTable.js";
+import { testTree } from "./test/useTree.js";
+import { testGraph } from "./test/useGraph.js";
 
-testStack();
+/*testStack();
 console.log(divideBy2(23));
 console.log(divideBy2(10));
 console.log(divideBy2(1000));
@@ -22,3 +26,11 @@ testLinkedList();
 testDoublyLinkedList();
 
 testSet();
+
+testDictionary();
+
+testHashTable();*/
+
+testTree();
+
+testGraph();
