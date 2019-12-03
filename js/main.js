@@ -6,6 +6,8 @@ import { testDictionary } from "./test/useDictionary.js";
 import { testHashTable } from "./test/useHashTable.js";
 import { testTree } from "./test/useTree.js";
 import { testGraph } from "./test/useGraph.js";
+import { testShortPath } from "./test/useShortPath.js";
+import { testSort } from "./test/useSort.js";
 
 /*testStack();
 console.log(divideBy2(23));
@@ -29,8 +31,12 @@ testSet();
 
 testDictionary();
 
-testHashTable();*/
+testHashTable();
 
 testTree();
 
 testGraph();
+
+testShortPath();*/
+
+testSort();
