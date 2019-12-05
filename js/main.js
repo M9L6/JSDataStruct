@@ -9,7 +9,7 @@ import { testGraph } from "./test/useGraph.js";
 import { testShortPath } from "./test/useShortPath.js";
 import { testSort } from "./test/useSort.js";
 
-/*testStack();
+testStack();
 console.log(divideBy2(23));
 console.log(divideBy2(10));
 console.log(divideBy2(1000));
@@ -37,6 +37,6 @@ testTree();
 
 testGraph();
 
-testShortPath();*/
+testShortPath();
 
 testSort();

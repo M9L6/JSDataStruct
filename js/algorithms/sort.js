@@ -232,6 +232,25 @@ function heapSort(arr) {
 }
 
 /**
+ * 希尔排序
+ * @param {*} arr  
+ * @param {*} gaps 间隔数组 
+ */
+function shellSort(arr, gaps = [1]) {
+    let i, j, k;
+    for (i = 0; i < gaps.length; i++) {
+        for (j = gaps[i]; j < arr.length; j++) {
+            let tmp = arr[j];
+            for (k = j; k >= gaps[i] && arr[k - gaps[i]] > tmp; k -= gaps[i]) {
+                arr[k] = arr[k - gaps[i]];
+            }
+            arr[k] = tmp;
+        }
+    }
+}
+
+
+/**
  * 顺序搜索
  * @param {*} arr 要查找的内容 
  * @param {*} item 要查找的元素
@@ -269,4 +288,4 @@ function binarySearch(arr, item) {
     return -1;
 }
 
-export { bubbleSort, modifiedBubbleSort, selectionSort, insertionSort, mergeSort, quickSort, heapSort, sequentialSearch, binarySearch }
+export { bubbleSort, modifiedBubbleSort, selectionSort, insertionSort, mergeSort, quickSort, heapSort, shellSort, sequentialSearch, binarySearch }

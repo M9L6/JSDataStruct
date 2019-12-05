@@ -1,4 +1,4 @@
-import { bubbleSort, modifiedBubbleSort, selectionSort, insertionSort, mergeSort, quickSort, heapSort, sequentialSearch, binarySearch } from "../algorithms/sort.js";
+import { bubbleSort, modifiedBubbleSort, selectionSort, insertionSort, mergeSort, quickSort, heapSort, sequentialSearch, binarySearch, shellSort } from "../algorithms/sort.js";
 
 function testSort() {
 
@@ -28,6 +28,10 @@ function testSort() {
 
     arr = [0, 2, 4, 51, 2, 10, 45, 1, 15, 43, 22];
     heapSort(arr);
+    console.log(...arr);
+
+    arr = [0, 2, 4, 51, 2, 10, 45, 1, 15, 43, 22];
+    shellSort(arr, [3, 2, 1]);
     console.log(...arr);
 
     console.log(sequentialSearch(arr, 10));
